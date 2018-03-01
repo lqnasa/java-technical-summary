@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
  * @ClassName: WebpUtil
  * @Description: webp格式工具类
  *               https://developers.google.com/speed/webp/docs/gif2webp
- * @author yanghaipeng
+ * @author liqiao
  * @date 2017-11-3 上午11:50:43
  * @version: V1.0
  */
