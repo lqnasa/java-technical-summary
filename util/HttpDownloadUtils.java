@@ -25,7 +25,7 @@ import com.onemt.agent.annotation.TraceMethod;
  * 
  * @ClassName: HttpDownloadUtils
  * @Description: http下载网络文件工具类
- * @author lennon dai
+ * @author liqiao
  * @date 2016-5-4 下午12:01:11
  *
  */
