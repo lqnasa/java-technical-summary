@@ -15,6 +15,7 @@ public class FfmpegUtil {
 	private static final String convertStr = "%s/ffmpeg -i %s -y -r 10 -loop 0 %s";
 	private static final String firstFrameToWebp = "%s/ffmpeg -i %s -y -vframes 1 %s";
 	private static final String first50FramesGif = "%s/ffmpeg -i %s -y -vframes %s -loop 0 %s";
+	private static final String convertGifToMp4 = "%s/ffmpeg -f gif -i %s %s";
 	//获取文件内容信息:ffprobe -v quiet -print_format json -show_format -show_streams -count_frames -show_packets D:\data\crawler\article\webp\2b24b6f403f346529bd38b4c87dcbf4b.webp
 	private static String ffmpegPath;
 
@@ -108,6 +109,31 @@ public class FfmpegUtil {
 		}
 	}
 
+	/**
+	 * 截取指定张数的gif图片
+	 * ffmpeg -f gif -i {input}.gif {output}.mp4
+	 * @param inputFilePath
+	 * @param outputFilePath
+	 * @throws Exception
+	 */
+	public static void getSpecifiedFramesCountGif(String inputFilePath, String outputFilePath, int count)
+			throws Exception {
+		Process exec = null;
+		try {
+			String execStrFormat = String.format(first50FramesGif, ffmpegPath, inputFilePath, count, outputFilePath);
+			logger.debug("execStrFormat first frame to webp :" + execStrFormat);
+			exec = Runtime.getRuntime().exec(execStrFormat);
+			exec.waitFor();
+		} catch (Exception e) {
+			logger.error("An error happend when first frame to webp . file is: {}", inputFilePath, e);
+			throw e;
+		} finally {
+			if (exec != null) {
+				exec.destroy();
+			}
+		}
+	}
+	
 	public static void main(String[] args) throws Exception {
 		String inputFilePath = "E:\\testFrams\\tenor(1).gif";
 		String outputFilePath = "E:\\testFrams\\tenor(1)first5.gif";
