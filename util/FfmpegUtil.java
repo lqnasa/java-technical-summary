@@ -105,7 +105,7 @@ public class FfmpegUtil {
 	}
 
 	/**
-	 * 截取指定张数的gif图片 ffmpeg -f gif -i {input}.gif {output}.mp4
+	 * 截取指定张数的gif图片
 	 * 
 	 * @param inputFilePath
 	 * @param outputFilePath
